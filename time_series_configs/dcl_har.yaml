@@ -1,0 +1,33 @@
+# Network config for 1D network fcn
+
+2dconv1:
+  w_kt: 5
+  w_ks: 1
+  w_cin: 1
+  w_cout: 64
+  out_s: 9
+  out_t: 124   
+
+2dconv2:
+  w_kt: 5
+  w_ks: 1
+  w_cin: 64
+  w_cout: 64
+  out_s: 9
+  out_t: 120  
+
+2dconv3:
+  w_kt: 5
+  w_ks: 1
+  w_cin: 64
+  w_cout: 64
+  out_s: 9
+  out_t: 116  
+
+2dconv4:
+  w_kt: 5
+  w_ks: 1
+  w_cin: 64
+  w_cout: 64
+  out_s: 9
+  out_t: 112  

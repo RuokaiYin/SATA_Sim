@@ -1,0 +1,46 @@
+# Define your yaml config for a single PE here.
+arch:
+  n_pe: 128
+
+pe:
+  mul: 0
+  acc: 1
+  add: 1
+  and: 1
+  comp: 1
+  mux: 2
+  reg: 1
+
+
+# Define the number of operations in on lif operation
+# reg: 1 for writing residual u, 1 for accumulate u with mac results, 1 for reset acc reg, total 3
+lif:
+  mul: 0
+  acc: 0
+  add: 0
+  and: 0
+  comp: 0
+  mux: 0
+  reg: 0
+
+# Define the number of operations in on relu operation
+# reg: 1 for reseting the acc
+relu:
+  mul: 0
+  acc: 0
+  add: 0
+  and: 0
+  comp: 1
+  mux: 1
+  reg: 1
+
+
+# Define the number of operations in on mac operation
+mac:
+  mul: 1
+  acc: 1
+  add: 0
+  and: 0
+  comp: 0
+  mux: 0
+  reg: 0
