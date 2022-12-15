@@ -1,0 +1,44 @@
+# Network config for 1D network fcn
+
+conv1:
+  type: 2dconv
+  H_h: 32
+  H_w: 32
+  C: 3
+  R_h: 3
+  R_w: 3
+  K: 64
+  E_h: 32
+  E_w: 32
+
+conv2:
+  type: 2dconv
+  H_h: 16
+  H_w: 16
+  C: 64
+  R_h: 3
+  R_w: 3
+  K: 128
+  E_h: 16
+  E_w: 16
+
+conv3:
+  type: 2dconv
+  H_h: 16
+  H_w: 16
+  C: 128
+  R_h: 3
+  R_w: 3
+  K: 128
+  E_h: 16
+  E_w: 16
+
+lin4:
+  type: linear
+  in: 8192
+  out: 1024
+
+lin5:
+  type: out_linear
+  in: 1024
+  out: 10

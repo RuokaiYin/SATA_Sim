@@ -1,0 +1,81 @@
+# Define your yaml config for a single PE here.
+arch:
+  n_pe: 128
+
+pe:
+  mul: 0
+  acc: 1
+  add: 1
+  and: 1
+  comp: 1
+  mux: 2
+  reg: 1
+  
+  
+# Define the operations in forward stage
+fwd:
+
+  # Define the number of operations in lif operation
+  # reg: 1 for writing residual u, 1 for accumulate u with mac results, 1 for reset acc reg, total 3
+  lif:
+    mul: 0
+    acc: 0
+    add: 1
+    and: 0
+    comp: 1
+    mux: 2
+    reg: 3
+    sft: 1
+
+  # Define the number of operations in mac operation
+  mac:
+    mul: 0
+    acc: 1
+    add: 0
+    and: 1
+    comp: 0
+    mux: 0
+    reg: 0
+    sft: 0
+  
+
+# Define the number of operations in backward stage
+bwd:
+
+  # Define the number of operations in pgu
+  # 
+  pgu:
+    mul: 1
+    acc: 0
+    add: 2
+    and: 0
+    comp: 0
+    mux: 1
+    reg: 0
+    sft: 2
+
+  # Define the number of operations in on mac operation
+  mac:
+    mul: 1
+    acc: 1
+    add: 0
+    and: 0
+    comp: 0
+    mux: 0
+    reg: 0
+    sft: 0
+
+
+# Define the operations in weight update stage
+wup:
+
+  # Define the number of operations in on mac operation
+  mac:
+    mul: 0
+    acc: 1
+    add: 0
+    and: 1
+    comp: 0
+    mux: 0
+    reg: 0
+    sft: 0
