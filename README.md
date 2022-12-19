@@ -21,13 +21,13 @@ If you find SATA_Sim is useful for your research, please use the following bibte
 ```
 
 ## Simple Usage Example
-Please first provide the shape information of the network by writing a yaml file like the vgg5_cifar10.yaml
-Then please specific the architecture like sata_config.yaml. You can directly use the sata_config.yaml to use the architecture of SATA.
-Then please specific the dynamic energy of the computation components in energy_configs.py. You can directly use the energy_configs.py for SATA.
-Then please specific the dynamic energy of the computation components in energy_configs.py. You can directly use the energy_configs.py for SATA.
-Please also specific the dynamic energy of memory components in mem_configs.py. This information can be got by using CACTI.
-Then please specific the timesteps, all three kinds of sparsity, bitwidth of parameters other than spikes in energy_cal.py.
-Finally, run the energy_cal.py, you will get the energy estimation that normalized with the energy of a single MAC operation in ANNs.
+<p>Please first provide the shape information of the network by writing a yaml file like the vgg5_cifar10.yaml. <br>
+Then please specific the architecture like sata_config.yaml. You can directly use the sata_config.yaml to use the architecture of SATA.<br>
+Then please specific the dynamic energy of the computation components in energy_configs.py. You can directly use the energy_configs.py for SATA.<br>
+Then please specific the dynamic energy of the computation components in energy_configs.py. You can directly use the energy_configs.py for SATA.<br>
+Please also specific the dynamic energy of memory components in mem_configs.py. This information can be got by using CACTI.<br>
+Then please specific the timesteps, all three kinds of sparsity, bitwidth of parameters other than spikes in energy_cal.py.<br>
+Finally, run the energy_cal.py, you will get the energy estimation that normalized with the energy of a single MAC operation in ANNs.</p>
 
 ## Contribution
 Active contributor:
