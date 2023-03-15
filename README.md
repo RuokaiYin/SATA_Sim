@@ -1,5 +1,17 @@
 # SATA_Sim
 
+## What's New:
+
+2023-Mar-15:
+
+SATA_Sim now supports the different operand size (weights and membrane potentials) for the forward stage energy estimation.
+
+One useful case is use the tool to estimate the energy cost improvement of the quantized SNN models (both weight and membrane potential quantization is supported).
+
+To check the energy cost for different operand size, simply change the 'fwd_b' variable in the energy_cal.py to the target operand size. Please note that we assume the weights and membrane potentials are always quantized to the same bit-width.
+
+
+
 ## Overview
 
 SATA_Sim is an energy estimation framework for Backpropagation-Through-Time (BPTT) based Spiking Neural Networks (SNNs) training with sparsity awareness.
@@ -13,10 +25,11 @@ If you find SATA_Sim is useful for your research, please use the following bibte
 
 ```
 @article{yin2022sata,
-  title={SATA: Sparsity-Aware Training Accelerator for Spiking Neural Networks},
+  title={Sata: Sparsity-aware training accelerator for spiking neural networks},
   author={Yin, Ruokai and Moitra, Abhishek and Bhattacharjee, Abhiroop and Kim, Youngeun and Panda, Priyadarshini},
-  journal={arXiv preprint arXiv:2204.05422},
-  year={2022}
+  journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems},
+  year={2022},
+  publisher={IEEE}
 }
 ```
 
@@ -44,7 +57,9 @@ The estimation of memory acess energy of forward, backward, and weight update st
 
 The instructions of using the codes will be added. :white_check_mark:
 
-Supporting the configurable bitwidth for internal datapaths.
+Supporting the configurable bitwidth for internal fwd datapaths. :white_check_mark:
+
+Supporting the configurable bitwidth for internal bwd & wup datapaths.
 
 Supporting the other dataflow mappings other than the one used in SATA.
 
