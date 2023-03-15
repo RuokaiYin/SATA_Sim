@@ -3,6 +3,29 @@ import energy_configs
 import yaml
 
 
+class Workload_Calculator:
+    """The Calculator to Get Total Workload"""
+
+    def __init__(self, mapping='TF', network_path=None, sp_dic=None, T=8):
+        
+
+        self.timstep = T
+        self.sp_du = sp_dic['du']
+        self.sp_s = sp_dic['s']
+        self.sp_df = sp_dic['df']
+
+        L = 0
+        with open(network_path,'r') as file:
+            documents = yaml.full_load(file)
+            for item, doc in documents.items():
+                L += 1
+        self.layer = L
+    
+    def cal(self):
+
+        print(self.layer)
+        
+        return None
 
 def get_workload(T,b,network_path,sp_s,sp_du,sp_df):
 
@@ -11,7 +34,9 @@ def get_workload(T,b,network_path,sp_s,sp_du,sp_df):
 
     with open(network_path,'r') as file:
         documents = yaml.full_load(file)
-
+        
+        T = 8
+        b = 8
         lif_n = 0
         mac_fwd_n = 0
         pgu_n = 0

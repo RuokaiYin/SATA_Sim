@@ -7,7 +7,7 @@ import yaml
 # def backward(energy_dic):
 
 
-def get_arch_energy(args, mem_args, hw_config):
+def get_arch_energy(args, mem_args, hw_config, fwd_b):
     
     arch_e_dic = {}
 
@@ -27,10 +27,10 @@ def get_arch_energy(args, mem_args, hw_config):
                 for item2, doc2 in doc.items():
                     if item2 == "lif":
                         for k in doc2:
-                            single_lif += energy_dic[k] * doc2[k]
+                            single_lif += (energy_dic[k] * (fwd_b/16)) * doc2[k]
                     elif item2 == "mac":
                         for k in doc2:
-                            single_mac_fwd += energy_dic[k] * doc2[k]
+                            single_mac_fwd += (energy_dic[k] * (fwd_b/16)) * doc2[k]
 
             elif item == "bwd":
                 for item2, doc2 in doc.items():
@@ -54,9 +54,9 @@ def get_arch_energy(args, mem_args, hw_config):
     arch_e_dic['mac_bwd'] = single_mac_bwd
     arch_e_dic['mac_wup'] = single_mac_wup
 
-    arch_e_dic['dram_fwd']=mem_args.dram
-    arch_e_dic['glb_fwd']=mem_args.sram
-    arch_e_dic['spad_fwd']=mem_args.spad
+    arch_e_dic['dram_fwd']=mem_args.dram * (fwd_b/16)
+    arch_e_dic['glb_fwd']=mem_args.sram * (fwd_b/16)
+    arch_e_dic['spad_fwd']=mem_args.spad * (fwd_b/16)
     arch_e_dic['dram_bwd']=mem_args.dram
     arch_e_dic['glb_bwd']= mem_args.sram
     arch_e_dic['spad_bwd']=mem_args.spad
