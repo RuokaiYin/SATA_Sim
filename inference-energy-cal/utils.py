@@ -2,6 +2,9 @@ import yaml
 import shutil
 import os
 import subprocess
+import re
+from collections import OrderedDict
+
 
 def extract_info(filename):
     with open(filename, 'r') as file:
@@ -72,9 +75,10 @@ def run_cacti_simulation(architecture_name, config_type):
     
     # List all the config files in the directory
     config_files = [f for f in os.listdir(config_dir) if f.endswith('.cfg')]
-    
     # Change directory to ../cacti
     os.chdir('../cacti')
+    
+    print(f"Running {config_type} simulations...")  # Debugging print
     
     for config_file in config_files:
         # Construct the full path for the config file
@@ -96,41 +100,87 @@ def run_cacti_simulation(architecture_name, config_type):
                 os.remove(file)
         os.chdir('../..')
 
-def extract_dram_read_energy(architecture_name):
-    # Set the directory for the log files
-    log_dir = f"../cacti/dram-config/{architecture_name}-dram-configs"
-    
-    # List all the log files in the directory
-    log_files = [f for f in os.listdir(log_dir) if f.endswith('.log')]
-    
-    # Dictionary to store read energy values
-    dram_data = {"DRAM": []}
-    
-    for log_file in log_files:
-        with open(os.path.join(log_dir, log_file), 'r') as file:
-            lines = file.readlines()
-            power_section_found = False
-            for line in lines:
-                if "Power Components" in line:
-                    power_section_found = True
-                if power_section_found and "Read energy" in line:
-                    # Extract the value and store it
-                    value = line.split(":")[-1].strip()
-                    dram_name = log_file.replace("-dram-config.log", "")
-                    dram_data["DRAM"].append({
-                        "name": dram_name,
-                        "Read energy": value
-                    })
-                    break
+def extract_data_from_log(log_path, keywords):
+    results = {}
+    with open(log_path, 'r') as file:
+        content = file.readlines()
+        for line in content:
+            for keyword, yaml_key in keywords.items():
+                if keyword in line:
+                    # Extract the numeric value from the line and convert to float
+                    value = float(re.search(r"[-+]?\d*\.\d+|\d+", line).group())
+                    results[yaml_key] = value
+    return results
 
-    # Save the extracted values to another file in YAML format
-    with open("dram_read_energy_results.txt", 'w') as file:
-        yaml.dump(dram_data, file)
+def extract_dram_data(architecture_name):
+    results = []
+    dram_log_dir = f'../cacti/dram-config/{architecture_name}-dram-configs'
+    log_files = [f for f in os.listdir(dram_log_dir) if f.endswith('.log')]
+    dram_keywords = {
+        "Read energy": "Read energy"
+    }
+    for log_file in log_files:
+        log_path = os.path.join(dram_log_dir, log_file)
+        dram_name = log_file.replace("dram-config-", "").replace(".log", "")
+        dram_results = extract_data_from_log(log_path, dram_keywords)
+        # Use OrderedDict to ensure order
+        ordered_results = OrderedDict([
+            ("name", dram_name),
+            ("Read energy", dram_results["Read energy"])
+        ])
+        results.append(ordered_results)
+    return results
+
+def extract_sram_data(architecture_name):
+    results = []
+    sram_log_dir = f"../cacti/sram-config/{architecture_name}-sram-configs"
+    log_files = [f for f in os.listdir(sram_log_dir) if f.endswith('.log')]
+    sram_keywords = {
+        "Total dynamic read energy per access (nJ):": "read dynamic energy (nJ)",
+        "Total dynamic write energy per access (nJ):": "write dynamic energy (nJ)",
+        "Total leakage power of a bank (mW):": "leakage power (mW)"
+    }
+    for log_file in log_files:
+        log_path = os.path.join(sram_log_dir, log_file)
+        sram_name = log_file.replace("sram-config-", "").replace(".log", "")
+        sram_results = extract_data_from_log(log_path, sram_keywords)
+        # Use OrderedDict to ensure order
+        ordered_results = OrderedDict([
+            ("name", sram_name),
+            ("read dynamic energy (nJ)", sram_results["read dynamic energy (nJ)"]),
+            ("write dynamic energy (nJ)", sram_results["write dynamic energy (nJ)"]),
+            ("leakage power (mW)", sram_results["leakage power (mW)"])
+        ])
+        results.append(ordered_results)
+    return results
+
+# Add a custom representer for OrderedDict
+def represent_ordereddict(dumper, data):
+    return dumper.represent_mapping('tag:yaml.org,2002:map', data.items())
+
+yaml.add_representer(OrderedDict, represent_ordereddict)
+
+def store_results_to_yaml(dram_data, sram_data):
+    results = {
+        "DRAM": dram_data,
+        "SRAM": sram_data
+    }
+    # Save the results to a YAML file
+    os.chdir(original_directory)
+    with open("memory-energy-components.yaml", 'w') as file:
+        yaml.dump(results, file)
 
 if __name__ == "__main__":
+    # Capture the original directory
+    original_directory = os.getcwd()
     architecture_name, sram_data, dram_data = extract_info('sata-config.yaml')
     generate_config_files(architecture_name, sram_data, "sram")
     generate_config_files(architecture_name, dram_data, "dram")
     run_cacti_simulation(architecture_name, "sram")
     run_cacti_simulation(architecture_name, "dram")
-    extract_dram_read_energy(architecture_name)
+    # extract_dram_energy(architecture_name, "dram")
+    dram_results = extract_dram_data(architecture_name)
+    sram_results = extract_sram_data(architecture_name)
+
+    # Store the results to a YAML file
+    store_results_to_yaml(dram_results, sram_results)
