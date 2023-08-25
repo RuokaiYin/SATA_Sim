@@ -1,0 +1,3 @@
+DRAM:
+- Read energy: 0.468762 nJ
+  name: dram-config-DRAM-system.log

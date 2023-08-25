@@ -21,7 +21,6 @@ def main():
     sp_du = 0.7
     sp_df = 0.6
 
-    
 
     keyword = ['lif','mac_fwd','pgu','mac_bwd','mac_wup','dram_fwd', 'glb_fwd','spad_fwd','dram_bwd',
                 'glb_bwd', 'spad_bwd', 'dram_wup', 'glb_wup', 'spad_wup']
