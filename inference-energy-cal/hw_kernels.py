@@ -57,6 +57,41 @@ class register(nn.Module):
 
 ###############################################################
 
+class registerfiles(nn.Module):
+    def __init__(self, size=16):
+        super(registerfiles , self).__init__()
+        self.q = 0.
+        self.d = 0.
+        self.size = size ## Size in bytes
+
+        self.byte = register(width = 8)
+        self.byte_area = self.byte.get_area()
+        self.byte_dpower = self.byte.get_dpower()
+        self.byte_lpower = self.byte.get_lpower()
+
+    def forward(self, x):
+        self.q = self.d
+        self.d = x
+
+    def get_area(self):
+        ### Return unit in mm^2
+        return self.size*self.byte_area
+    
+    def get_dpower(self):
+        ### Return unit in mw
+        return self.size*self.byte_dpower
+
+    def get_lpower(self):
+        ### Return unit in mw
+        return self.size*self.byte_lpower
+    
+    def get_total_power(self):
+        total = self.get_dpower()+self.get_lpower
+        ### Return unit in mw
+        return total
+
+###############################################################
+
 class comparator(nn.Module):
     def __init__(self, width=16):
         super(comparator, self).__init__()

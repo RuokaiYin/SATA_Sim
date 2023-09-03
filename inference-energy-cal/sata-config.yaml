@@ -78,27 +78,27 @@ architecture:
               class: memory
               act-tag: spad
               attributes:
-                kernel: register-files
+                kernel: registerfiles
                 width: 8
-                size-bytes: 9216
+                size-bytes: 9
                 count: 1
                 gated: n
             - name: SPAD-weight
               class: memory
               act-tag: spad
               attributes:
-                kernel: register-files
+                kernel: registerfiles
                 width: 8
-                size-bytes: 9216
+                size-bytes: 1152
                 count: 1
                 gated: y
             - name: SPAD-psum
               class: memory
               act-tag: spad
               attributes:
-                kernel: register-files
+                kernel: registerfiles
                 width: 8
-                size-bytes: 9216
+                size-bytes: 8
                 count: 1
                 gated: n        
   
