@@ -1,0 +1,7 @@
+ArrayHeight: 16
+ArrayWidth: 8
+FilterSramSzkB: 144
+IfmapSramSzkB: 32
+OfmapSramSzkB: 32
+dataflow: sata
+run_name: SATA-inference

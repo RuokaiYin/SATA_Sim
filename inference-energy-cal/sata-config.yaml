@@ -1,5 +1,6 @@
 architecture:
   name: SATA-inference
+  dataflow: sata
 
   subtree:
     - name: PE-array
@@ -108,7 +109,7 @@ architecture:
       local:
         - name: GLB-weight
           class: memory
-          act-tag: glb
+          act-tag: glb-weight
           attributes:
             kernel: sram
             width: 32
@@ -116,10 +117,9 @@ architecture:
             bank: 2
             count: 1
             gated: y
-      local:
         - name: GLB-spike
           class: memory
-          act-tag: glb
+          act-tag: glb-ifmap
           attributes:
             kernel: sram
             width: 32

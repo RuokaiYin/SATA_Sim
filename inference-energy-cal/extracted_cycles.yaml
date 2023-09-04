@@ -1,0 +1,16 @@
+Layer 0:
+  DRAM IFMAP Reads: 4096.0
+  DRAM OFMAP Writes: 1024.0
+  SRAM IFMAP Cycles: 527081.0
+  SRAM IFMAP Reads: 524288.0
+  SRAM OFMAP Cycles: 522993.0
+  SRAM OFMAP Start Cycle: 4110.0
+  SRAM OFMAP Writes: 4096.0
+Layer 1:
+  DRAM IFMAP Reads: 1024.0
+  DRAM OFMAP Writes: 10.0
+  SRAM IFMAP Cycles: 2069.0
+  SRAM IFMAP Reads: 2048.0
+  SRAM OFMAP Cycles: 1047.0
+  SRAM OFMAP Start Cycle: 1038.0
+  SRAM OFMAP Writes: 58.0
