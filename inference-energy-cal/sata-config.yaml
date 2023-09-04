@@ -1,6 +1,7 @@
 architecture:
   name: SATA-inference
   dataflow: sata
+  timestep: 8
 
   subtree:
     - name: PE-array

@@ -167,7 +167,7 @@ def store_results_to_yaml(dram_data, sram_data):
     }
     # Save the results to a YAML file
     os.chdir(original_directory)
-    with open("memory-stat.yaml", 'w') as file:
+    with open("results/mem-stat.yaml", 'w') as file:
         yaml.dump(results, file)
 
 if __name__ == "__main__":
