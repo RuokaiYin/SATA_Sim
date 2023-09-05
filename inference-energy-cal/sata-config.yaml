@@ -2,6 +2,7 @@ architecture:
   name: SATA-inference
   dataflow: sata
   timestep: 8
+  clock-frequency: 400
 
   subtree:
     - name: PE-array
@@ -118,9 +119,19 @@ architecture:
             bank: 2
             count: 1
             gated: y
-        - name: GLB-spike
+        - name: GLB-ifmap
           class: memory
           act-tag: glb-ifmap
+          attributes:
+            kernel: sram
+            width: 32
+            size-bytes: 32768
+            bank: 2
+            count: 1
+            gated: y
+        - name: GLB-ofmap
+          class: memory
+          act-tag: glb-ofmap
           attributes:
             kernel: sram
             width: 32

@@ -104,12 +104,14 @@ def extract_data_from_log(log_path, keywords):
     results = {}
     with open(log_path, 'r') as file:
         content = file.readlines()
-        for line in content:
-            for keyword, yaml_key in keywords.items():
-                if keyword in line:
-                    # Extract the numeric value from the line and convert to float
-                    value = float(re.search(r"[-+]?\d*\.\d+|\d+", line).group())
-                    results[yaml_key] = value
+    for line in content:
+        for keyword, yaml_key in keywords.items():
+            if keyword in line:
+                # print(yaml_key)
+                # Extract the numeric value from the line and convert to float
+                value = float(re.search(r"[-+]?\d*\.\d+|\d+", line).group())
+                results[yaml_key] = value
+    # print(results)
     return results
 
 def extract_dram_data(architecture_name):
@@ -117,7 +119,7 @@ def extract_dram_data(architecture_name):
     dram_log_dir = f'../cacti/dram-config/{architecture_name}-dram-configs'
     log_files = [f for f in os.listdir(dram_log_dir) if f.endswith('.log')]
     dram_keywords = {
-        "Read energy": "Read energy"
+        "Read energy": "read energy"
     }
     for log_file in log_files:
         log_path = os.path.join(dram_log_dir, log_file)
@@ -126,9 +128,10 @@ def extract_dram_data(architecture_name):
         # Use OrderedDict to ensure order
         ordered_results = OrderedDict([
             ("name", dram_name),
-            ("Read energy", dram_results["Read energy"])
+            ("read energy", dram_results["read energy"])
         ])
         results.append(ordered_results)
+    shutil.rmtree(dram_log_dir)
     return results
 
 def extract_sram_data(architecture_name):
@@ -136,9 +139,9 @@ def extract_sram_data(architecture_name):
     sram_log_dir = f"../cacti/sram-config/{architecture_name}-sram-configs"
     log_files = [f for f in os.listdir(sram_log_dir) if f.endswith('.log')]
     sram_keywords = {
-        "Total dynamic read energy per access (nJ):": "read dynamic energy (nJ)",
-        "Total dynamic write energy per access (nJ):": "write dynamic energy (nJ)",
-        "Total leakage power of a bank (mW):": "leakage power (mW)"
+        "Total dynamic read energy per access (nJ):": "read dynamic energy",
+        "Total dynamic write energy per access (nJ):": "write dynamic energy",
+        "Total leakage power of a bank (mW):": "leakage power"
     }
     for log_file in log_files:
         log_path = os.path.join(sram_log_dir, log_file)
@@ -147,11 +150,14 @@ def extract_sram_data(architecture_name):
         # Use OrderedDict to ensure order
         ordered_results = OrderedDict([
             ("name", sram_name),
-            ("read dynamic energy (nJ)", sram_results["read dynamic energy (nJ)"]),
-            ("write dynamic energy (nJ)", sram_results["write dynamic energy (nJ)"]),
-            ("leakage power (mW)", sram_results["leakage power (mW)"])
+            ("read dynamic energy", sram_results["read dynamic energy"]),
+            ("write dynamic energy", sram_results["write dynamic energy"]),
+            ("leakage power", sram_results["leakage power"])
         ])
         results.append(ordered_results)
+    # print(results)
+    shutil.rmtree(sram_log_dir)
+    
     return results
 
 # Add a custom representer for OrderedDict

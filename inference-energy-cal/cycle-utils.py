@@ -1,6 +1,7 @@
 import yaml
 import os
 import shutil
+import subprocess
 
 # Function Definitions
 
@@ -88,7 +89,8 @@ def update_config(yaml_filename, default_config_path, output_config_path):
 if __name__ == "__main__":
     filename = 'sata-config.yaml'
     scalesim_dict = extract_scalesim_dict_from_yaml(filename)
-    print(scalesim_dict)
+    # print(scalesim_dict)
+    scalesim_path = '../scale-sim-v2'
 
     output_filename = 'cycle-stat-temp.yaml'
     with open(output_filename, 'w') as outfile:
@@ -101,3 +103,6 @@ if __name__ == "__main__":
 
     # Update the copied file with values from the YAML file
     update_config(output_filename, default_config_path, output_config_path)
+    os.remove(output_filename)
+    os.chdir(scalesim_path)
+    subprocess.run('python3 run.py', shell=True)
