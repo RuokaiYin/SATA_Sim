@@ -5,6 +5,7 @@ mul = hw_kernels.multiplier(8)
 reg = hw_kernels.register(8)
 mac_8_bit = adder.get_dpower() + mul.get_dpower() + reg.get_dpower()
 acc_8_bit = adder.get_dpower() + reg.get_dpower()
+scale = 1/250
 
 #########################   TDBN   ###################################
 
@@ -17,7 +18,7 @@ mul_n = 3.4e7
 adder = hw_kernels.adder(8)
 mul = hw_kernels.multiplier(8)
 
-tdbn_total_estimated_energy = (add_n*adder.get_dpower() + mul_n*mul.get_dpower())/mac_8_bit
+tdbn_total_estimated_energy = (add_n*adder.get_dpower() + mul_n*mul.get_dpower()) * scale
 
 print('TDBN estimated energy in (/8-bit int MAC): ', round(tdbn_total_estimated_energy,2))
 
@@ -41,7 +42,7 @@ for c in Conv:
     else:
         img_size = img_size/2
 n_acc =  n_acc + (512*img_size*img_size*1024) + 1024*512
-tssl_total_estimated_energy = (n_acc * acc_8_bit * T * (1-spa))/mac_8_bit
+tssl_total_estimated_energy = (n_acc * acc_8_bit * T * (1-spa)) * scale
 
 print('TSSL estimated energy in (/8-bit int MAC): ', round(tssl_total_estimated_energy,2))
 
@@ -65,7 +66,7 @@ for c in Conv:
     else:
         img_size = img_size/2
 n_acc =  n_acc + (512*img_size*img_size*1024) + 1024*512
-tssl_total_estimated_energy = (n_acc * acc_8_bit * T * (1-spa))/mac_8_bit
+tssl_total_estimated_energy = (n_acc * acc_8_bit * T * (1-spa)) * scale
 print('Direct estimated energy in (/8-bit int MAC): ', round(tssl_total_estimated_energy,2))
 
 
@@ -99,18 +100,18 @@ for c in Conv:
         img_size = img_size/2
         membrane_size = membrane_size/2
 n_acc =  n_acc + (512*img_size*img_size*1024) + 1024*512
-print(n_acc)
-tssl_total_estimated_energy = (n_acc * acc_8_bit * T * (1-spa))/mac_8_bit
+# print(n_acc)
+tssl_total_estimated_energy = (n_acc * acc_8_bit * T * (1-spa)) * scale
 print('BNTT estimated energy in (/8-bit int MAC): ', round(tssl_total_estimated_energy,2))
 
-U_size = U_size + 1024 + 512
-U_size = U_size*u_bit/8 ### bits to MB
+# U_size = U_size + 1024 + 512
+# U_size = U_size*u_bit/8 ### bits to MB
 
-W_size += (512*img_size*img_size*1024) + 1024*512
+# W_size += (512*img_size*img_size*1024) + 1024*512
 
-W_size = W_size*w_bit/8 ### bits to MB
+# W_size = W_size*w_bit/8 ### bits to MB
 
-print('U size', U_size)
-print('W size', W_size)
+# print('U size', U_size)
+# print('W size', W_size)
 
-print(acc_8_bit*1e-3*(1/300e6))
+# print(acc_8_bit*1e-3*(1/300e6))

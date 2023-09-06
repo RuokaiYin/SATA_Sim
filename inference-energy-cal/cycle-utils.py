@@ -2,6 +2,7 @@ import yaml
 import os
 import shutil
 import subprocess
+import csv
 
 # Function Definitions
 
@@ -84,6 +85,37 @@ def update_config(yaml_filename, default_config_path, output_config_path):
 
     print(f"{output_config_path} updated successfully!")
 
+
+def generate_temp_workload():
+    with open('./workload.yaml', 'r') as file:
+        data = yaml.safe_load(file)
+
+    # Convert YAML data to CSV rows
+    csv_rows = []
+    for layer in data.get('Layers', []):
+        attributes = layer.get('attributes', {})
+        row = [
+            layer.get('name', 'N/A'),
+            attributes.get('IFMAP Height', 'N/A'),
+            attributes.get('IFMAP Width', 'N/A'),
+            attributes.get('Filter Height', 'N/A'),
+            attributes.get('Filter Width', 'N/A'),
+            attributes.get('Channels', 'N/A'),
+            attributes.get('Num Filter', 'N/A'),
+            attributes.get('Strides', 'N/A'),
+            ''
+        ]
+        csv_rows.append(row)
+
+    # Write the CSV data to a file
+    csv_file_path = '../scale-sim-v2/temp_workload.csv'
+    with open(csv_file_path, 'w', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        csv_writer.writerow(['Layer name', 'IFMAP Height', 'IFMAP Width', 'Filter Height', 'Filter Width', 'Channels', 'Num Filter', 'Strides', ''])
+        csv_writer.writerows(csv_rows)
+
+    print("CSV file written successfully.")
+
 # Main Execution
 
 if __name__ == "__main__":
@@ -104,5 +136,6 @@ if __name__ == "__main__":
     # Update the copied file with values from the YAML file
     update_config(output_filename, default_config_path, output_config_path)
     os.remove(output_filename)
+    generate_temp_workload()
     os.chdir(scalesim_path)
     subprocess.run('python3 run.py', shell=True)

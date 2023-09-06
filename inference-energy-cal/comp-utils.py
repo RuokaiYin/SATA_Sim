@@ -43,11 +43,12 @@ def extract_act_dict_from_yaml(filename):
                     gated = attributes.get('gated')
                     width = attributes.get('width')
                     size  = attributes.get('size-bytes')
-
+                    
                      # Create the kernel object using the class from hw-kernels.py
                     KernelClass = getattr(hw_kernels, kernel_name, None)
                     if KernelClass:
                         kernel_obj = KernelClass(size)
+                        # print(kernel_obj.get_dpower())
                     else:
                         print(f"Warning: No matching register-files found for kernel: {kernel_name}")
                         kernel_obj = kernel_name  # Use the name as a fallback
@@ -55,6 +56,7 @@ def extract_act_dict_from_yaml(filename):
                         act_dict[act_tag].append((kernel_obj, count, gated))
                     else:
                         act_dict[act_tag] = [(kernel_obj, count, gated)]
+                # print(act_dict)
             else:
                 recursive_search(subtree.get('subtree', []))
 
@@ -68,11 +70,14 @@ def aggregate_act_data(act_dict):
         area_total = 0
         lpower_total = 0
         dpower = {'n': 0, 'y': 0}
-
+        
         for kernel_obj, count, gated in kernel_list:
+            # print(gated)
             area_total += kernel_obj.get_area() * count
             lpower_total += kernel_obj.get_lpower() * count
             dpower[gated] += kernel_obj.get_dpower() * count
+            # if 'spad' in act_tag:
+            
 
         # Restricting to 4 decimal places
         area_total = round(area_total, 6)
@@ -93,7 +98,7 @@ def aggregate_act_data(act_dict):
 if __name__ == "__main__":
     filename = 'sata-config.yaml'
     act_dict = extract_act_dict_from_yaml(filename)
-    print(act_dict)
+    # print(act_dict)
     aggregated_act_data = aggregate_act_data(act_dict)
     print(aggregated_act_data)
 

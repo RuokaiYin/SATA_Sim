@@ -1,7 +1,7 @@
 architecture:
   name: SATA-inference
   dataflow: sata
-  timestep: 8
+  # timestep: 8
   clock-frequency: 400
 
   subtree:
@@ -92,7 +92,7 @@ architecture:
               attributes:
                 kernel: registerfiles
                 width: 8
-                size-bytes: 1152
+                size-bytes: 9
                 count: 1
                 gated: y
             - name: SPAD-psum
