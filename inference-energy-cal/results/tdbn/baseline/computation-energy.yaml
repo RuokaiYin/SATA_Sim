@@ -1,0 +1,16 @@
+lif:
+  energy-leakage: 41974.73271936
+  energy-operation: 6808.91264
+  energy-ungated: 28108079.946
+  total: 28156863.591359362
+spad:
+  energy-leakage: 261342.68109792002
+  energy-operation: 32139950.653439995
+  energy-ungated: 106101130.9321632
+  total: 138502424.2667011
+spike-mac:
+  energy-leakage: 30981.350340480003
+  energy-operation: 7179380.490240001
+  energy-ungated: 9614212.5895296
+  total: 16824574.430110082
+total: 183483862.28817058

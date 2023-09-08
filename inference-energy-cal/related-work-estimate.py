@@ -1,4 +1,5 @@
 import hw_kernels
+import importlib
 
 adder = hw_kernels.adder(8)
 mul = hw_kernels.multiplier(8)
@@ -103,6 +104,51 @@ n_acc =  n_acc + (512*img_size*img_size*1024) + 1024*512
 # print(n_acc)
 tssl_total_estimated_energy = (n_acc * acc_8_bit * T * (1-spa)) * scale
 print('BNTT estimated energy in (/8-bit int MAC): ', round(tssl_total_estimated_energy,2))
+
+
+#########################   SBP   #################################
+
+Conv = [64, 64, "M", 128, 128, "M", 256, 256, 256, "M"]
+Linear = [1024,512]
+T = 50
+spa = 0.9
+
+kernel_size = 3*3
+input_channel = 3
+img_size = 32
+
+W_size = 0
+U_size = 0
+w_bit = 8
+u_bit = 32
+membrane_size = img_size
+batch = 1
+
+n_acc = 0
+for c in Conv:
+    if type(c) is int:
+        n_acc += input_channel*kernel_size*c*img_size*img_size
+        U_size += c*(membrane_size**2)*batch
+        W_size += input_channel*c*kernel_size
+        input_channel = c
+    else:
+        img_size = img_size/2
+        membrane_size = membrane_size/2
+n_acc =  n_acc + (512*img_size*img_size*1024) + 1024*512
+# print(n_acc)
+sbp_total_estimated_energy = (n_acc * acc_8_bit * T * (1-spa)) * scale
+print('SBP estimated energy in (/8-bit int MAC): ', round(sbp_total_estimated_energy,2))
+
+
+
+#########################   LTH   #################################
+energy_cal = importlib.import_module("energy-cal")
+
+dic = energy_cal.extract_workload('./workloads/workload_lth.yaml')
+n_acc = dic['total_mac']
+lth_total_estimated_energy = n_acc * acc_8_bit * scale
+print('LTH estimated energy in (/8-bit int MAC): ', round(lth_total_estimated_energy,2))
+
 
 # U_size = U_size + 1024 + 512
 # U_size = U_size*u_bit/8 ### bits to MB

@@ -1,6 +1,6 @@
 General:
-  timestep: 10
-  sparsity: 0.5
+  timestep: 5
+  sparsity: 0.98
 
 Layers:
   - name: Conv1

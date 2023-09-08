@@ -203,6 +203,7 @@ if __name__ == "__main__":
     arch_path = './sata-config.yaml'
     mem_path = './results/mem-stat.yaml'
     comp_path = './results/comp-stat.yaml'
+    # work_path = './workloads/workload_direct.yaml'
     work_path = './workload.yaml'
 
     cycle_stat = read_cycles(cycle_path, arch_path, work_path)
