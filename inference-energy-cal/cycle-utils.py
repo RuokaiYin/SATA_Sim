@@ -108,7 +108,7 @@ def generate_temp_workload():
         csv_rows.append(row)
 
     # Write the CSV data to a file
-    csv_file_path = '../scale-sim-v2/temp_workload.csv'
+    csv_file_path = '../scale-sim/temp_workload.csv'
     with open(csv_file_path, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file)
         csv_writer.writerow(['Layer name', 'IFMAP Height', 'IFMAP Width', 'Filter Height', 'Filter Width', 'Channels', 'Num Filter', 'Strides', ''])
@@ -122,7 +122,7 @@ if __name__ == "__main__":
     filename = 'sata-config.yaml'
     scalesim_dict = extract_scalesim_dict_from_yaml(filename)
     # print(scalesim_dict)
-    scalesim_path = '../scale-sim-v2'
+    scalesim_path = '../scale-sim'
 
     output_filename = 'cycle-stat-temp.yaml'
     with open(output_filename, 'w') as outfile:
@@ -130,8 +130,8 @@ if __name__ == "__main__":
     print(f"Cycle stats written to {output_filename}")
 
 
-    default_config_path = os.path.join('..', 'scale-sim-v2', 'configs', 'default.cfg')
-    output_config_path = os.path.join('..', 'scale-sim-v2', 'configs', 'running.cfg')
+    default_config_path = os.path.join('..', 'scale-sim', 'configs', 'default.cfg')
+    output_config_path = os.path.join('..', 'scale-sim', 'configs', 'running.cfg')
 
     # Update the copied file with values from the YAML file
     update_config(output_filename, default_config_path, output_config_path)
