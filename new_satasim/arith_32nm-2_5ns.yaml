@@ -17,5 +17,57 @@ MUL:
         power-leakage: 0.057968
         access-latency: 1
         cycle-time: 2.5
-          
-      
+
+ACC:
+  interpolation: linear
+  already_syn:
+    - bw: 16
+      attributes:
+        area: 0.00048761
+        power-dynamic: 0.03889335
+        power-leakage: 0.00973555
+        access-latency: 1
+        cycle-time: 2.5
+    - bw: 32
+      attributes:
+        area: 0.000975218492
+        power-dynamic: 0.0777867
+        power-leakage: 0.0194711
+        access-latency: 1
+        cycle-time: 2.5
+
+ADD:
+  interpolation: linear
+  already_syn:
+    - bw: 16
+      attributes:
+        area: 0.00030571
+        power-dynamic: 0.00966525
+        power-leakage: 0.00495076
+        access-latency: 1
+        cycle-time: 2.5
+    - bw: 32
+      attributes:
+        area: 0.0006114299702241958
+        power-dynamic: 0.0193305
+        power-leakage: 0.00990153
+        access-latency: 1
+        cycle-time: 2.5
+
+REG:
+  interpolation: linear
+  already_syn:
+    - bw: 16
+      attributes:
+        area: 0.000176418486
+        power-dynamic: 0.0300831
+        power-leakage: 0.0045801
+        access-latency: 1
+        cycle-time: 2.5
+    - bw: 32
+      attributes:
+        area: 0.00035284
+        power-dynamic: 0.0601662
+        power-leakage: 0.0091602
+        access-latency: 1
+        cycle-time: 2.5
