@@ -1,0 +1,21 @@
+
+#area unit in mm^2, power unit in mw, access_latency in cycle, cycle time in ns.
+MUL:
+  interpolation: quadratic
+  already_syn:
+    - bw: 16
+      attributes:
+        area: 0.0024563018
+        power-dynamic: 0.239484
+        power-leakage: 0.057968
+        access-latency: 1
+        cycle-time: 2.5
+    - bw: 32
+      attributes:
+        area: 0.0049126
+        power-dynamic: 0.239484
+        power-leakage: 0.057968
+        access-latency: 1
+        cycle-time: 2.5
+          
+      
