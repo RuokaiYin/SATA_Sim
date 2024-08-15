@@ -1,0 +1,1175 @@
+General:
+  timestep: 6
+  sparsity: 0.9
+
+Layers:
+  - name: Conv1
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 3
+      Filter Width: 3
+      Channels: 2
+      Num Filter: 64
+      Strides: 1
+  - name: Conv2a
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 64
+      Num Filter: 24
+      Strides: 1
+  - name: Conv2b
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 24
+      Num Filter: 24
+      Strides: 1
+  - name: Conv2c
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 24
+      Num Filter: 24
+      Strides: 1
+  - name: Conv2d
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 24
+      Num Filter: 64
+      Strides: 1
+  - name: Conv3a
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 64
+      Num Filter: 23
+      Strides: 1
+  - name: Conv3b
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 23
+      Num Filter: 23
+      Strides: 1
+  - name: Conv3c
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 23
+      Num Filter: 23
+      Strides: 1
+  - name: Conv3d
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 23
+      Num Filter: 64
+      Strides: 1
+  - name: Conv4a
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 64
+      Num Filter: 22
+      Strides: 1
+  - name: Conv4b
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 22
+      Num Filter: 22
+      Strides: 1
+  - name: Conv4c
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 22
+      Num Filter: 22
+      Strides: 1
+  - name: Conv4d
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 22
+      Num Filter: 64
+      Strides: 1
+  - name: Conv5a
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 64
+      Num Filter: 17
+      Strides: 1
+  - name: Conv5b
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 17
+      Num Filter: 17
+      Strides: 1
+  - name: Conv5c
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 17
+      Num Filter: 17
+      Strides: 1
+  - name: Conv5d
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 17
+      Num Filter: 64
+      Strides: 1
+  - name: Conv6a
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 64
+      Num Filter: 16
+      Strides: 1
+  - name: Conv6b
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 16
+      Num Filter: 16
+      Strides: 1
+  - name: Conv6c
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 16
+      Num Filter: 16
+      Strides: 1
+  - name: Conv6d
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 16
+      Num Filter: 64
+      Strides: 1
+  - name: Conv7a
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 64
+      Num Filter: 12
+      Strides: 1
+  - name: Conv7b
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 12
+      Num Filter: 12
+      Strides: 1
+  - name: Conv7c
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 12
+      Num Filter: 12
+      Strides: 1
+  - name: Conv7d
+    attributes:
+      IFMAP Height: 48
+      IFMAP Width: 48
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 12
+      Num Filter: 64
+      Strides: 1
+  - name: Conv8a
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 64
+      Num Filter: 22
+      Strides: 1
+  - name: Conv8b
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 22
+      Num Filter: 22
+      Strides: 1
+  - name: Conv8c
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 22
+      Num Filter: 22
+      Strides: 1
+  - name: Conv8d
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 22
+      Num Filter: 128
+      Strides: 1
+  - name: Conv9a
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 128
+      Num Filter: 31
+      Strides: 1
+  - name: Conv9b
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 31
+      Num Filter: 31
+      Strides: 1
+  - name: Conv9c
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 31
+      Num Filter: 31
+      Strides: 1
+  - name: Conv9d
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 31
+      Num Filter: 128
+      Strides: 1
+  - name: Conv10a
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 128
+      Num Filter: 25
+      Strides: 1
+  - name: Conv10b
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 25
+      Num Filter: 25
+      Strides: 1
+  - name: Conv10c
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 25
+      Num Filter: 25
+      Strides: 1
+  - name: Conv10d
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 25
+      Num Filter: 128
+      Strides: 1
+  - name: Conv11a
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 128
+      Num Filter: 25
+      Strides: 1
+  - name: Conv11b
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 25
+      Num Filter: 25
+      Strides: 1
+  - name: Conv11c
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 25
+      Num Filter: 25
+      Strides: 1
+  - name: Conv11d
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 25
+      Num Filter: 128
+      Strides: 1
+  - name: Conv12a
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 128
+      Num Filter: 24
+      Strides: 1
+  - name: Conv12b
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 24
+      Num Filter: 24
+      Strides: 1
+  - name: Conv12c
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 24
+      Num Filter: 24
+      Strides: 1
+  - name: Conv12d
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 24
+      Num Filter: 128
+      Strides: 1
+  - name: Conv13a
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 128
+      Num Filter: 21
+      Strides: 1
+  - name: Conv13b
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 21
+      Num Filter: 21
+      Strides: 1
+  - name: Conv13c
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 21
+      Num Filter: 21
+      Strides: 1
+  - name: Conv13d
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 21
+      Num Filter: 128
+      Strides: 1
+  - name: Conv14a
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 128
+      Num Filter: 20
+      Strides: 1
+  - name: Conv14b
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 20
+      Num Filter: 20
+      Strides: 1
+  - name: Conv14c
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 20
+      Num Filter: 20
+      Strides: 1
+  - name: Conv14d
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 20
+      Num Filter: 128
+      Strides: 1
+  - name: Conv15a
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 128
+      Num Filter: 19
+      Strides: 1
+  - name: Conv15b
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 19
+      Num Filter: 19
+      Strides: 1
+  - name: Conv15c
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 19
+      Num Filter: 19
+      Strides: 1
+  - name: Conv15d
+    attributes:
+      IFMAP Height: 24
+      IFMAP Width: 24
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 19
+      Num Filter: 128
+      Strides: 1
+  - name: Conv16a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 128
+      Num Filter: 48
+      Strides: 1
+  - name: Conv16b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 48
+      Num Filter: 48
+      Strides: 1
+  - name: Conv16c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 48
+      Num Filter: 48
+      Strides: 1
+  - name: Conv16d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 48
+      Num Filter: 256
+      Strides: 1
+  - name: Conv17a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 79
+      Strides: 1
+  - name: Conv17b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 79
+      Num Filter: 79
+      Strides: 1
+  - name: Conv17c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 79
+      Num Filter: 79
+      Strides: 1
+  - name: Conv17d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 79
+      Num Filter: 256
+      Strides: 1
+  - name: Conv18a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 64
+      Strides: 1
+  - name: Conv18b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 64
+      Num Filter: 64
+      Strides: 1
+  - name: Conv18c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 64
+      Num Filter: 64
+      Strides: 1
+  - name: Conv18d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 64
+      Num Filter: 256
+      Strides: 1  
+  - name: Conv19a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 69
+      Strides: 1
+  - name: Conv19b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 69
+      Num Filter: 69
+      Strides: 1
+  - name: Conv19c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 69
+      Num Filter: 69
+      Strides: 1
+  - name: Conv19d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 69
+      Num Filter: 256
+      Strides: 1
+  - name: Conv20a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 63
+      Strides: 1
+  - name: Conv20b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 63
+      Num Filter: 63
+      Strides: 1
+  - name: Conv20c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 63
+      Num Filter: 63
+      Strides: 1
+  - name: Conv20d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 63
+      Num Filter: 256
+      Strides: 1
+  - name: Conv21a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 69
+      Strides: 1
+  - name: Conv21b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 69
+      Num Filter: 69
+      Strides: 1
+  - name: Conv21c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 69
+      Num Filter: 69
+      Strides: 1
+  - name: Conv21d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 69
+      Num Filter: 256
+      Strides: 1
+  - name: Conv22a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 60
+      Strides: 1
+  - name: Conv22b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 60
+      Num Filter: 60
+      Strides: 1
+  - name: Conv22c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 60
+      Num Filter: 60
+      Strides: 1
+  - name: Conv22d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 60
+      Num Filter: 256
+      Strides: 1
+  - name: Conv23a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 65
+      Strides: 1
+  - name: Conv23b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 65
+      Num Filter: 65
+      Strides: 1
+  - name: Conv23c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 65
+      Num Filter: 65
+      Strides: 1
+  - name: Conv23d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 65
+      Num Filter: 256
+      Strides: 1
+  - name: Conv24a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 63
+      Strides: 1
+  - name: Conv24b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 63
+      Num Filter: 63
+      Strides: 1
+  - name: Conv24c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 63
+      Num Filter: 63
+      Strides: 1
+  - name: Conv24d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 63
+      Num Filter: 256
+      Strides: 1
+  - name: Conv25a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 63
+      Strides: 1
+  - name: Conv25b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 63
+      Num Filter: 63
+      Strides: 1
+  - name: Conv25c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 63
+      Num Filter: 63
+      Strides: 1
+  - name: Conv25d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 63
+      Num Filter: 256
+      Strides: 1
+  - name: Conv26a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 62
+      Strides: 1
+  - name: Conv26b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 62
+      Num Filter: 62
+      Strides: 1
+  - name: Conv26c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 62
+      Num Filter: 62
+      Strides: 1
+  - name: Conv26d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 62
+      Num Filter: 256
+      Strides: 1
+  - name: Conv27a
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 58
+      Strides: 1
+  - name: Conv27b
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 58
+      Num Filter: 58
+      Strides: 1
+  - name: Conv27c
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 58
+      Num Filter: 58
+      Strides: 1
+  - name: Conv27d
+    attributes:
+      IFMAP Height: 12
+      IFMAP Width: 12
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 58
+      Num Filter: 256
+      Strides: 1
+  - name: Conv28a
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 256
+      Num Filter: 121
+      Strides: 1
+  - name: Conv28b
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 121
+      Num Filter: 121
+      Strides: 1
+  - name: Conv28c
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 121
+      Num Filter: 121
+      Strides: 1
+  - name: Conv28d
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 121
+      Num Filter: 512
+      Strides: 1
+  - name: Conv29a
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 512
+      Num Filter: 170
+      Strides: 1
+  - name: Conv29b
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 170
+      Num Filter: 170
+      Strides: 1
+  - name: Conv29c
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 170
+      Num Filter: 170
+      Strides: 1
+  - name: Conv29d
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 170
+      Num Filter: 512
+      Strides: 1
+  - name: Conv30a
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 512
+      Num Filter: 173
+      Strides: 1
+  - name: Conv30b
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 173
+      Num Filter: 173
+      Strides: 1
+  - name: Conv30c
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 173
+      Num Filter: 173
+      Strides: 1
+  - name: Conv30d
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 173
+      Num Filter: 512
+      Strides: 1
+  - name: Conv31a
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 512
+      Num Filter: 147
+      Strides: 1
+  - name: Conv31b
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 147
+      Num Filter: 147
+      Strides: 1
+  - name: Conv31c
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 147
+      Num Filter: 147
+      Strides: 1
+  - name: Conv31d
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 147
+      Num Filter: 512
+      Strides: 1
+  - name: Conv32a
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 512
+      Num Filter: 161
+      Strides: 1
+  - name: Conv32b
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 161
+      Num Filter: 161
+      Strides: 1
+  - name: Conv32c
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 161
+      Num Filter: 161
+      Strides: 1
+  - name: Conv32d
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 161
+      Num Filter: 512
+      Strides: 1
+  - name: Conv33a
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 512
+      Num Filter: 108
+      Strides: 1
+  - name: Conv33b
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 3
+      Filter Width: 1
+      Channels: 108
+      Num Filter: 108
+      Strides: 1
+  - name: Conv33c
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 3
+      Channels: 108
+      Num Filter: 108
+      Strides: 1
+  - name: Conv33d
+    attributes:
+      IFMAP Height: 6
+      IFMAP Width: 6
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 108
+      Num Filter: 512
+      Strides: 1
+  - name: FC1
+    attributes:
+      IFMAP Height: 1
+      IFMAP Width: 1
+      Filter Height: 1
+      Filter Width: 1
+      Channels: 512
+      Num Filter: 101
+      Strides: 1

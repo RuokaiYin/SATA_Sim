@@ -1,0 +1,159 @@
+architecture:
+  name: SATA-inference-T2
+  dataflow: sata
+  # timestep: 8
+  clock-frequency: 400
+  act-prec: 2
+  weight-prec: 8
+  output-prec: 8
+
+  subtree:
+    - name: PE-array
+      class: pe-array
+      attributes:
+        width: 8
+        height: 16
+        
+      subtree:
+        - name: PE-compute
+          class: pe-compute
+
+          local:
+            - name: and-gate
+              class: compute
+              act-tag: spike-mac
+              attributes:
+                kernel: andgate
+                width: 8
+                gated: n
+                count: 1
+            - name: adder
+              class: compute
+              act-tag: spike-mac
+              attributes:
+                kernel: adder
+                width: 8
+                gated: n
+                count: 1
+            - name: reg-acc
+              class: compute
+              act-tag: spike-mac
+              attributes:
+                kernel: register
+                width: 16
+                gated: y
+                count: 1
+            - name: comp-lif
+              class: compute
+              act-tag: lif
+              attributes:
+                kernel: comparator
+                width: 16
+                gated: n
+                count: 1
+            - name: sub-lif
+              class: compute
+              act-tag: lif
+              attributes:
+                kernel: subtractor
+                width: 16
+                gated: n
+                count: 1
+            - name: reg-th
+              class: compute
+              act-tag: lif
+              attributes:
+                kernel: register
+                width: 4
+                gated: y
+                count: 1
+            - name: reg-membrane
+              class: compute
+              act-tag: lif
+              attributes:
+                kernel: register
+                width: 8
+                gated: y
+                count: 1
+                
+        - name: PE-mem
+          class: pe-mem
+
+          local:
+            - name: SPAD-spike
+              class: memory
+              act-tag: spad
+              attributes:
+                kernel: registerfiles
+                width: 8
+                size-bytes: 9
+                count: 1
+                gated: n
+            - name: SPAD-weight
+              class: memory
+              act-tag: spad
+              attributes:
+                kernel: registerfiles
+                width: 8
+                size-bytes: 288
+                count: 1
+                gated: y
+            - name: SPAD-psum
+              class: memory
+              act-tag: spad
+              attributes:
+                kernel: registerfiles
+                width: 8
+                size-bytes: 64
+                count: 1
+                gated: n        
+  
+    - name: GLBs
+      class: glbs
+
+      local:
+        - name: GLB-weight
+          class: memory
+          act-tag: glb-weight
+          attributes:
+            kernel: sram
+            width: 32
+            size-bytes: 147456
+            bank: 2
+            count: 1
+            gated: y
+        - name: GLB-ifmap
+          class: memory
+          act-tag: glb-ifmap
+          attributes:
+            kernel: sram
+            width: 32
+            size-bytes: 8192
+            bank: 2
+            count: 1
+            gated: y
+        - name: GLB-ofmap
+          class: memory
+          act-tag: glb-ofmap
+          attributes:
+            kernel: sram
+            width: 32
+            size-bytes: 32768
+            bank: 2
+            count: 1
+            gated: y
+  
+    - name: DRAMs
+      class: dram
+
+      local:
+        - name: DRAM-system
+          class: memory
+          act-tag: dram
+          attributes:
+            kernel: dram
+            width: 128
+            size-bytes: 536870912
+            bank: 16
+            count: 1
+            gated: y
