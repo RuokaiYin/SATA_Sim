@@ -67,10 +67,15 @@ def extract_workload(workload_filepath):
     for l in layers:
         # print(l)
         attr = l['attributes']
-        of_w = (math.floor((attr['IFMAP Width'] + 2 - attr['Filter Width'])/attr['Strides']) + 1) # TODO: Adding support for different padding, now assume 1
-        of_h = (math.floor((attr['IFMAP Height'] + 2 - attr['Filter Height'])/attr['Strides']) + 1)
-        total_lif += attr['Num Filter'] * (of_w * of_h) * timestep
-        total_mac += attr['Num Filter'] * (of_w * of_h) * (attr['Filter Width'] * attr['Filter Height'] * attr['Channels']) * timestep * (1-sparsity)
+        name = l['name']
+        if 'Conv' in name:
+            of_w = (math.floor((attr['IFMAP Width'] + 2 - attr['Filter Width'])/attr['Strides']) + 1) # TODO: Adding support for different padding, now assume 1
+            of_h = (math.floor((attr['IFMAP Height'] + 2 - attr['Filter Height'])/attr['Strides']) + 1)
+            total_lif += attr['Num Filter'] * (of_w * of_h) * timestep
+            total_mac += attr['Num Filter'] * (of_w * of_h) * (attr['Filter Width'] * attr['Filter Height'] * attr['Channels']) * timestep * (1-sparsity)
+        elif 'FC' in name: #! Added support for FC.
+            total_mac += attr['Num Filter'] * attr['Channels'] * timestep * (1-sparsity)
+            total_lif += attr['Num Filter'] * timestep
     
     workload_dic['total_mac'] = int(total_mac)
     workload_dic['total_lif'] = int(total_lif)
