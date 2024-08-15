@@ -1,6 +1,9 @@
 # SATA_Sim
 
 ## What's New:
+**2024-Feb-20:**
+
+A new and more rigorous version of SATA_Sim will be released soon...
 
 **2023-Sep-6:**
 
