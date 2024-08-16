@@ -8,7 +8,6 @@ def read_cycles(cycle_filepath, arch_configpath, workload_filepath):
         data = yaml.safe_load(file)
     arch = data.get('architecture')
     dataflow = arch.get('dataflow')
-    # timestep = arch.get('timestep')
     with open(workload_filepath, 'r') as file:
         work_data = yaml.safe_load(file)
     general = work_data.get('General')
@@ -29,10 +28,11 @@ def read_cycles(cycle_filepath, arch_configpath, workload_filepath):
     if dataflow == 'sata':
         for layer, stats in data.items():
             # print((stats.get('SRAM OFMAP Start Cycle') + stats.get('SRAM OFMAP Cycles'))*timestep)
-            cycle_stats['total_cycles'] += (stats.get('SRAM OFMAP Start Cycle') + stats.get('SRAM OFMAP Cycles'))*timestep + stats.get('SRAM Filter Cycles')
+            cycle_stats['total_cycles'] += (stats.get('SRAM OFMAP Start Cycle') + stats.get('SRAM OFMAP Cycles')) * timestep + stats.get('SRAM Filter Cycles')
             cycle_stats['sram_i_reads'] += stats.get('SRAM IFMAP Reads')
             cycle_stats['sram_w_reads'] += stats.get('SRAM Filter Reads')
-            cycle_stats['sram_o_writes'] += stats.get('SRAM OFMAP Writes')*timestep
+            # cycle_stats['sram_o_writes'] += stats.get('SRAM OFMAP Writes') #! This is the arxived version where the writing of psum is not considered.
+            cycle_stats['sram_o_writes'] += stats.get('SRAM OFMAP Writes') * timestep
             cycle_stats['dram_i_reads'] += stats.get('DRAM IFMAP Reads')
             cycle_stats['dram_w_reads'] += stats.get('DRAM Filter Reads')
             cycle_stats['dram_o_writes'] += stats.get('DRAM OFMAP Writes')
@@ -49,7 +49,6 @@ def read_cycles(cycle_filepath, arch_configpath, workload_filepath):
     return cycle_stats
     
 
-
 def extract_workload(workload_filepath):
     
     with open(workload_filepath, 'r') as file:
@@ -60,12 +59,10 @@ def extract_workload(workload_filepath):
 
     workload_dic = {}
     layers = work_data.get('Layers', {})
-    # print(layers)
     total_mac = 0.0
     total_lif = 0.0
 
     for l in layers:
-        # print(l)
         attr = l['attributes']
         name = l['name']
         if 'Conv' in name:
@@ -83,9 +80,6 @@ def extract_workload(workload_filepath):
     return workload_dic
 
 
-    # print(sparsity)
-
-    # if dataflow == 'sata':
 def comp_computation_energy(comp_filepath, cycle_dict, arch_configpath, workload_dict):
     
     with open(arch_configpath, 'r') as file:
@@ -113,18 +107,15 @@ def comp_computation_energy(comp_filepath, cycle_dict, arch_configpath, workload
             workload = workload_dict['total_lif']
         else:
             workload = workload_dict['total_mac']
-        # print(f"{component}:")
         # ! Power of computation unit is in mW, from the comp-stat.yaml
         convert_ratio = 1000000 # ! Need to convert it back to nJ, to align with the memory energy, which is in nJ
         for key, value in values.items():
             if isinstance(value, dict):
-                # print(key)
                 comp_dic[component]['energy-operation'] = value['y'] * workload * cyc * convert_ratio 
                 subtotal += comp_dic[component]['energy-operation']
                 comp_dic[component]['energy-ungated'] = value['n']*cycle_dict['total_cycles'] * cyc * convert_ratio * pe_size
                 subtotal += comp_dic[component]['energy-ungated']
             elif 'lpower' in key:
-                # print(key)
                 comp_dic[component]['energy-leakage'] = value * cycle_dict['total_cycles'] * cyc * convert_ratio * pe_size
                 subtotal += comp_dic[component]['energy-leakage']
         comp_dic[component]['total'] = subtotal
@@ -152,8 +143,6 @@ def comp_mem_energy(mem_filepath, cycle_dict, arch_configpath):
     w_bw = arch.get('weight-prec')
     o_bw = arch.get('output-prec')
     convert_ratio = 1000000 #! Need again to convert SRAM leakage to nJ, the leaking power is in mW from the mem-stats.yaml
-    # timestep = arch.get('timestep')
-    
 
     with open(mem_filepath, 'r') as file:
         data = yaml.safe_load(file)
@@ -198,13 +187,11 @@ def comp_mem_energy(mem_filepath, cycle_dict, arch_configpath):
             mem_dic[name]['ofmap-leakage'] = entry.get('leakage power') * cycle_dict['total_cycles'] * cyc * convert_ratio
             mem_dic[name]['ofmap-total']= mem_dic[name]['ofmap-dynamic'] + mem_dic[name]['ofmap-leakage']
             total_sram += mem_dic[name]['ofmap-dynamic'] + mem_dic[name]['ofmap-leakage']
+    
     mem_dic['sram_total'] = total_sram
-
     mem_dic['total'] = total_dram + total_sram
 
-    # print(mem_dic)
     file_path = './results/memory-energy.yaml'
-    # print()
     with open(file_path, 'w') as yaml_file:
         yaml.dump(mem_dic, yaml_file, default_flow_style=False)
     return mem_dic

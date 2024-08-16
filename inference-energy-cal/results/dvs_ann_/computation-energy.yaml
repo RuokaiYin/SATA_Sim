@@ -1,0 +1,18 @@
+mac:
+  energy-leakage: 642.92811744
+  energy-operation: 141488.381952
+  energy-ungated: 216398.6196288
+  total: 358529.92969824
+relu:
+  energy-leakage: 58.15430208
+  energy-operation: 0.0
+  energy-ungated: 63162.033648000004
+  total: 63220.187950080006
+spad:
+  energy-leakage: 27532.83124032
+  energy-operation: 4747231.494144
+  energy-ungated: 5487956.8713984005
+  total: 10262721.196782721
+total: 10684471.314431041
+total_activation_ops: 1981440
+total_mac_ops: 527892480

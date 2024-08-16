@@ -1,0 +1,18 @@
+mac:
+  area: 0.000328
+  dpower:
+    n: 0.06698
+    y: 0.10721
+  lpower: 0.000199
+relu:
+  area: 3.2e-05
+  dpower:
+    n: 0.01955
+    y: 0
+  lpower: 1.8e-05
+spad:
+  area: 0.010966
+  dpower:
+    n: 1.19904
+    y: 2.79776
+  lpower: 0.006432
