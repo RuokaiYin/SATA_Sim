@@ -1,6 +1,15 @@
 # SATA_Sim
 
 ## What's New:
+**2024-Sep-23:**
+
+We recently uploaded the HAR simulation codes for reproducing the computation energy results in the paper:
+
+ <Li, Y., Yin, R., Kim, Y., & Panda, P. (2023). Efficient human activity recognition with spatio-temporal spiking neural networks. Frontiers in Neuroscience, 17, 1233037.>
+
+ The codes can be found under the folder of /har_simulation.
+
+
 **2024-Feb-20:**
 
 A new and more rigorous version of SATA_Sim will be released soon...
