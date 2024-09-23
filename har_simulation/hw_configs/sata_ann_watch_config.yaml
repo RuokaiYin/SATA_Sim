@@ -1,0 +1,36 @@
+# Define your yaml config for a single PE here.
+arch:
+  n_pe: 128
+
+pe:
+  mul: 0
+  acc: 1
+  add: 1
+  and: 1
+  comp: 1
+  mux: 2
+  reg: 1
+
+#! Define the operations in forward stage
+fwd: 
+  # Define the number of operations in on relu operation
+  # reg: 1 for reseting the acc
+  act:
+    mul: 0
+    acc: 0
+    add: 0
+    and: 0
+    comp: 1
+    mux: 1
+    reg: 1
+
+
+  # Define the number of operations in on mac operation
+  mac:
+    mul: 1
+    acc: 1
+    add: 0
+    and: 0
+    comp: 0
+    mux: 0
+    reg: 0

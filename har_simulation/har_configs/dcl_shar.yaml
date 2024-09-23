@@ -1,0 +1,39 @@
+# Network config for Spike-based 2D-DeepConvLSTM DCL
+
+# kernel size is (5,1) and padding is (2,0) for all layers
+
+conv1:
+  type: 2dconv
+  w_kt: 5
+  w_ks: 1
+  w_cin: 1
+  w_cout: 64
+  out_s: 3
+  out_t: 147   
+
+conv2:
+  type: 2dconv  
+  w_kt: 5
+  w_ks: 1
+  w_cin: 64
+  w_cout: 64
+  out_s: 3
+  out_t: 143  
+
+conv3:
+  type: 2dconv
+  w_kt: 5
+  w_ks: 1
+  w_cin: 64
+  w_cout: 64
+  out_s: 3
+  out_t: 139  
+
+conv4:
+  type: 2dconv
+  w_kt: 5
+  w_ks: 1
+  w_cin: 64
+  w_cout: 64
+  out_s: 3
+  out_t: 135  

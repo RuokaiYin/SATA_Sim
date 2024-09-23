@@ -76,8 +76,8 @@ def get_workload(T,b,network_path,sp_s,sp_du,sp_df):
                 lif_n += doc['out'] * T
                 mac_fwd_n = doc['out'] * doc['in'] * T
                 pgu_n += doc['out'] * T
-                mac_bwd_n = doc['out'] * doc['in'] * T
-                mac_wup_n = doc['out'] * doc['in'] * T
+                mac_bwd_n += doc['out'] * doc['in'] * T
+                mac_wup_n += doc['out'] * doc['in'] * T
 
                 dram_fwd_n += doc['out'] * doc['in'] + doc['out']*T + doc['in']*T*(1/b)
                 glb_fwd_n += 2*(doc['out'] * doc['in'] + doc['out']*T + doc['in']*T*(1/b))

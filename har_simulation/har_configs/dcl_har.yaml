@@ -1,0 +1,37 @@
+# Network config for 2D-DeepConvLSTM DCL
+
+conv1:
+  type: 2dconv
+  w_kt: 5
+  w_ks: 1
+  w_cin: 1
+  w_cout: 64
+  out_s: 9
+  out_t: 124   
+
+conv2:
+  type: 2dconv
+  w_kt: 5
+  w_ks: 1
+  w_cin: 64
+  w_cout: 64
+  out_s: 9
+  out_t: 120  
+
+conv3:
+  type: 2dconv
+  w_kt: 5
+  w_ks: 1
+  w_cin: 64
+  w_cout: 64
+  out_s: 9
+  out_t: 116  
+
+conv4:
+  type: 2dconv
+  w_kt: 5
+  w_ks: 1
+  w_cin: 64
+  w_cout: 64
+  out_s: 9
+  out_t: 112  
